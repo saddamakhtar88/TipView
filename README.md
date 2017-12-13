@@ -52,6 +52,7 @@ customTip.margin = UIEdgeInsets(top: 4, left: 4, bottom: 0, right: 0)
 // Most of the styling properties doesn't have any impact on custom
 //customTip.maxWidth = 300 // doesn't have any impact
 
+// message in show() method will be ignored if customMessageView is being set
 customTip.customMessageView = UIView(frame: CGRect.zero)
 customTip.customMessageView?.translatesAutoresizingMaskIntoConstraints = false
 customTip.customMessageView!.widthAnchor.constraint(equalToConstant: 100).isActive = true
@@ -64,6 +65,7 @@ customTip.customAnchorView!.widthAnchor.constraint(equalToConstant: 10).isActive
 customTip.customAnchorView!.heightAnchor.constraint(equalToConstant: 10).isActive = true
 customTip.customAnchorView!.backgroundColor = UIColor.darkGray
 
+// message will be ignored here as customMessageView is being set on the tipview instance
 customTip.show(message: msg, sourceView: <source view>, containerView: <container view>, direction: .bottom)
 
 ```
