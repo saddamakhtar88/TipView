@@ -35,10 +35,7 @@ An autolayout based ready to use tool tip library with maximum customization.
 
 ```swift
 
-TipView().show(message: <tip message>,
-sourceView: <sourceView>,
-containerView: <containerView>,
-direction: .right)
+TipView().show(message: <tip message>, sourceView: <source view>, containerView: <container view>, direction: .right)
 
 // Global configurations
 TipView.maxWidth = 270
@@ -49,29 +46,25 @@ TipView.showAnimation = TipViewAnimation.showWithScale
 TipView.dismissAnimation = TipViewAnimation.dismissWithScale
 //TipView.enableDismissOnTapOutsideTipInContainer = true
 
-let topLeftTip = TipView()
-topLeftTip.margin = UIEdgeInsets(top: 4, left: 4, bottom: 0, right: 0)
+let customTip = TipView()
+customTip.margin = UIEdgeInsets(top: 4, left: 4, bottom: 0, right: 0)
 
 // Most of the styling properties doesn't have any impact on custom
-//topLeftTip.maxWidth = 300 // doesn't have any impact
+//customTip.maxWidth = 300 // doesn't have any impact
 
-topLeftTip.customMessageView = UIView(frame: CGRect.zero)
-topLeftTip.customMessageView?.translatesAutoresizingMaskIntoConstraints = false
-topLeftTip.customMessageView!.widthAnchor.constraint(equalToConstant: 100).isActive = true
-topLeftTip.customMessageView!.heightAnchor.constraint(equalToConstant: 100).isActive = true
-topLeftTip.customMessageView?.backgroundColor = UIColor.darkGray
+customTip.customMessageView = UIView(frame: CGRect.zero)
+customTip.customMessageView?.translatesAutoresizingMaskIntoConstraints = false
+customTip.customMessageView!.widthAnchor.constraint(equalToConstant: 100).isActive = true
+customTip.customMessageView!.heightAnchor.constraint(equalToConstant: 100).isActive = true
+customTip.customMessageView?.backgroundColor = UIColor.darkGray
 
-topLeftTip.customAnchorView = UIView(frame: CGRect.zero)
-topLeftTip.customAnchorView!.translatesAutoresizingMaskIntoConstraints = false
-topLeftTip.customAnchorView!.widthAnchor.constraint(equalToConstant: 10).isActive = true
-topLeftTip.customAnchorView!.heightAnchor.constraint(equalToConstant: 10).isActive = true
-topLeftTip.customAnchorView!.backgroundColor = UIColor.darkGray
+customTip.customAnchorView = UIView(frame: CGRect.zero)
+customTip.customAnchorView!.translatesAutoresizingMaskIntoConstraints = false
+customTip.customAnchorView!.widthAnchor.constraint(equalToConstant: 10).isActive = true
+customTip.customAnchorView!.heightAnchor.constraint(equalToConstant: 10).isActive = true
+customTip.customAnchorView!.backgroundColor = UIColor.darkGray
 
-topLeftTip.show(message: msg,
-sourceView: self.leftTopView,
-containerView: self.view,
-direction: .bottom)
-}
+customTip.show(message: msg, sourceView: <source view>, containerView: <container view>, direction: .bottom)
 
 ```
 
