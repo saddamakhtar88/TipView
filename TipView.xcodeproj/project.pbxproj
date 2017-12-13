@@ -43,7 +43,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7215E4821FDF83230068A0A8 /* Library */ = {
+		7215E4821FDF83230068A0A8 /* TipViewSource */ = {
 			isa = PBXGroup;
 			children = (
 				72B64FD91FDE3D3B007745DF /* TipView.swift */,
@@ -51,7 +51,7 @@
 				7215E4851FDF84260068A0A8 /* AnchorView.swift */,
 				7215E4871FDFFF5A0068A0A8 /* TipViewTransition.swift */,
 			);
-			path = Library;
+			path = TipViewSource;
 			sourceTree = "<group>";
 		};
 		72B64FBB1FDE3CC5007745DF = {
@@ -75,7 +75,7 @@
 			children = (
 				72B64FC71FDE3CC5007745DF /* AppDelegate.swift */,
 				72B64FC91FDE3CC5007745DF /* ViewController.swift */,
-				7215E4821FDF83230068A0A8 /* Library */,
+				7215E4821FDF83230068A0A8 /* TipViewSource */,
 				72B64FCB1FDE3CC5007745DF /* Main.storyboard */,
 				72B64FCE1FDE3CC5007745DF /* Assets.xcassets */,
 				72B64FD01FDE3CC5007745DF /* LaunchScreen.storyboard */,

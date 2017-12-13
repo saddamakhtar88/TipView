@@ -85,45 +85,10 @@ class TipView: NSObject {
               sourceView: UIView,
               containerView: UIView?,
               direction: Direction = .none) {
-        
-        self.direction = direction
-        self.sourceView = sourceView
         self.message = msg
-        
-        if let prContainerView: UIView = containerView ?? UIApplication.shared.keyWindow {
-            self.containerView = prContainerView
-            
-            prContainerView.addSubview(tipViewAnchor)
-            prContainerView.addSubview(tipView)
-            
-            switch direction {
-            case .left:
-                addOnTheLeft(sourceView: sourceView, containerView: prContainerView)
-            case .right:
-                addOnTheRight(sourceView: sourceView, containerView: prContainerView)
-            case .top:
-                addOnTheTop(sourceView: sourceView, containerView: prContainerView)
-            case .bottom:
-                addOnTheBottom(sourceView: sourceView, containerView: prContainerView)
-            case .none:
-                tipViewAnchor.removeFromSuperview()
-                addInTheCentre(containerView: prContainerView)
-            }
-                        
-            if self.enableDismissOnTapOutsideTipInContainer == true || TipView.enableDismissOnTapOutsideTipInContainer {
-                tapOverTipContainerGesture = UITapGestureRecognizer(target: self, action: #selector(TipView.dismiss))
-                self.containerView!.addGestureRecognizer(tapOverTipContainerGesture!)
-                tapOverTipContainerGesture?.delegate = self
-                
-                holdMyself = self
-            }
-            
-            if let showAnimation = showAnimation ?? TipView.showAnimation {
-                showAnimation(tipView, tipViewAnchor, {
-                    //
-                })
-            }
-        }
+        show(sourceView: sourceView,
+             containerView: containerView,
+             direction: direction)
     }
     
     func show(message msg: String,
@@ -137,7 +102,8 @@ class TipView: NSObject {
              direction: direction)
         
         Timer.scheduledTimer(timeInterval: dismissAfter, target: self,
-                             selector: #selector(TipView.dismiss), userInfo: nil, repeats: false)
+                             selector: #selector(TipView.dismiss), userInfo: nil,
+                             repeats: false)
     }
     
     func show(message msg: String,
@@ -149,6 +115,35 @@ class TipView: NSObject {
         self.dismissClosure = dismissClosure
         show(message: msg,
              sourceView: sourceView,
+             containerView: containerView,
+             direction: direction)
+    }
+    
+    func show(messageView: UIView,
+              sourceView: UIView,
+              containerView: UIView?,
+              direction: Direction = .none,
+              dismissAfterDuration dismissAfter: TimeInterval) {
+        
+        self.customMessageView = messageView
+        show(sourceView: sourceView,
+             containerView: containerView,
+             direction: direction)
+        
+        Timer.scheduledTimer(timeInterval: dismissAfter, target: self,
+                             selector: #selector(TipView.dismiss), userInfo: nil,
+                             repeats: false)
+    }
+    
+    func show(messageView: UIView,
+              sourceView: UIView,
+              containerView: UIView?,
+              direction: Direction = .none,
+              dismissClosure: DismissClosureType?) {
+        
+        self.customMessageView = messageView
+        self.dismissClosure = dismissClosure
+        show(sourceView: sourceView,
              containerView: containerView,
              direction: direction)
     }
@@ -188,7 +183,50 @@ class TipView: NSObject {
         //debugPrint("TipView released from memory")
     }
     
-    // MARK: - Private methods | Styling
+    // MARK: - Private methods
+    
+    private func show(sourceView: UIView,
+                      containerView: UIView?,
+                      direction: Direction = .none) {
+        
+        self.direction = direction
+        self.sourceView = sourceView
+        
+        if let prContainerView: UIView = containerView ?? UIApplication.shared.keyWindow {
+            self.containerView = prContainerView
+            
+            prContainerView.addSubview(tipViewAnchor)
+            prContainerView.addSubview(tipView)
+            
+            switch direction {
+            case .left:
+                addOnTheLeft(sourceView: sourceView, containerView: prContainerView)
+            case .right:
+                addOnTheRight(sourceView: sourceView, containerView: prContainerView)
+            case .top:
+                addOnTheTop(sourceView: sourceView, containerView: prContainerView)
+            case .bottom:
+                addOnTheBottom(sourceView: sourceView, containerView: prContainerView)
+            case .none:
+                tipViewAnchor.removeFromSuperview()
+                addInTheCentre(containerView: prContainerView)
+            }
+            
+            if self.enableDismissOnTapOutsideTipInContainer == true || TipView.enableDismissOnTapOutsideTipInContainer {
+                tapOverTipContainerGesture = UITapGestureRecognizer(target: self, action: #selector(TipView.dismiss))
+                self.containerView!.addGestureRecognizer(tapOverTipContainerGesture!)
+                tapOverTipContainerGesture?.delegate = self
+                
+                holdMyself = self
+            }
+            
+            if let showAnimation = showAnimation ?? TipView.showAnimation {
+                showAnimation(tipView, tipViewAnchor, {
+                    //
+                })
+            }
+        }
+    }
     
     private func applyMessageViewStyle(messageView: MessageView) {
         messageView.backgroundColor = self.color ?? TipView.color

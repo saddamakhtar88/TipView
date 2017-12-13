@@ -46,27 +46,32 @@ TipView.showAnimation = TipViewAnimation.showWithScale
 TipView.dismissAnimation = TipViewAnimation.dismissWithScale
 //TipView.enableDismissOnTapOutsideTipInContainer = true
 
-let customTip = TipView()
-customTip.margin = UIEdgeInsets(top: 4, left: 4, bottom: 0, right: 0)
 
-// Most of the styling properties doesn't have any impact on custom
-//customTip.maxWidth = 300 // doesn't have any impact
+let topLeftTip = TipView()
+topLeftTip.margin = UIEdgeInsets(top: 4, left: 4, bottom: 0, right: 0)
 
-// message in show() method will be ignored if customMessageView is being set
-customTip.customMessageView = UIView(frame: CGRect.zero)
-customTip.customMessageView?.translatesAutoresizingMaskIntoConstraints = false
-customTip.customMessageView!.widthAnchor.constraint(equalToConstant: 100).isActive = true
-customTip.customMessageView!.heightAnchor.constraint(equalToConstant: 100).isActive = true
-customTip.customMessageView?.backgroundColor = UIColor.darkGray
+//topLeftTip.maxWidth = 300 // doesn't have any impact
 
-customTip.customAnchorView = UIView(frame: CGRect.zero)
-customTip.customAnchorView!.translatesAutoresizingMaskIntoConstraints = false
-customTip.customAnchorView!.widthAnchor.constraint(equalToConstant: 10).isActive = true
-customTip.customAnchorView!.heightAnchor.constraint(equalToConstant: 10).isActive = true
-customTip.customAnchorView!.backgroundColor = UIColor.darkGray
+let customMessageView = UIView(frame: CGRect.zero)
+customMessageView.translatesAutoresizingMaskIntoConstraints = false
+customMessageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+customMessageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+customMessageView.backgroundColor = UIColor.darkGray
 
-// message will be ignored here as customMessageView is being set on the tipview instance
-customTip.show(message: msg, sourceView: <source view>, containerView: <container view>, direction: .bottom)
+// Don't set customAnchorView if you want to show the default
+// anchorView.
+topLeftTip.customAnchorView = UIView(frame: CGRect.zero)
+topLeftTip.customAnchorView!.translatesAutoresizingMaskIntoConstraints = false
+topLeftTip.customAnchorView!.widthAnchor.constraint(equalToConstant: 10).isActive = true
+topLeftTip.customAnchorView!.heightAnchor.constraint(equalToConstant: 10).isActive = true
+topLeftTip.customAnchorView!.backgroundColor = UIColor.darkGray
+
+topLeftTip.show(messageView: customMessageView, sourceView: self.leftTopView, containerView: self.view, direction: .bottom, dismissClosure: { (tipView) in
+    TipView().show(message: msg,
+    sourceView: self.rightTopView,
+    containerView: self.view,
+    direction: .left)
+})
 
 ```
 

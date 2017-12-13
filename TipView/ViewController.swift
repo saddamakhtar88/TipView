@@ -103,17 +103,30 @@ class ViewController: UIViewController {
         // Most of the styling properties doesn't have any impact on custom
         //topLeftTip.maxWidth = 300 // doesn't have any impact
         
-        topLeftTip.customMessageView = UIView(frame: CGRect.zero)
-        topLeftTip.customMessageView?.translatesAutoresizingMaskIntoConstraints = false
-        topLeftTip.customMessageView!.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        topLeftTip.customMessageView!.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        topLeftTip.customMessageView?.backgroundColor = UIColor.darkGray
+        let customMessageView = UIView(frame: CGRect.zero)
+        customMessageView.translatesAutoresizingMaskIntoConstraints = false
+        customMessageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        customMessageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        customMessageView.backgroundColor = UIColor.darkGray
         
+        // Don't set customAnchorView if you want to show the default
+        // anchorView.
         topLeftTip.customAnchorView = UIView(frame: CGRect.zero)
         topLeftTip.customAnchorView!.translatesAutoresizingMaskIntoConstraints = false
         topLeftTip.customAnchorView!.widthAnchor.constraint(equalToConstant: 10).isActive = true
         topLeftTip.customAnchorView!.heightAnchor.constraint(equalToConstant: 10).isActive = true
         topLeftTip.customAnchorView!.backgroundColor = UIColor.darkGray
+        
+        topLeftTip.show(messageView: customMessageView,
+                        sourceView: self.leftTopView,
+                        containerView: self.view,
+                        direction: .bottom,
+                        dismissClosure: { (tipView) in
+                            TipView().show(message: msg,
+                                           sourceView: self.rightTopView,
+                                           containerView: self.view,
+                                           direction: .left)
+        })
         
         topLeftTip.show(message: msg,
                         sourceView: self.leftTopView,
