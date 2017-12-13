@@ -34,10 +34,16 @@ An autolayout based ready to use tool tip library with maximum customization.
 ## Usage example
 
 ```swift
+// Simply call show on TipView instance with basic parameters
+TipView().show(message: <tip message>, 
+                sourceView: <source view>, 
+                containerView: <container view>, 
+                direction: .right)
 
-TipView().show(message: <tip message>, sourceView: <source view>, containerView: <container view>, direction: .right)
+// Apply Global configurations using provided class properties.
+// All the styling properties are available as instance property as well
+// to support overriding global configuration on a specific instance
 
-// Global configurations
 TipView.maxWidth = 270
 TipView.color = UIColor.darkGray
 TipView.font = UIFont(name: "Arial-ItalicMT", size: 18.0)
@@ -46,11 +52,9 @@ TipView.showAnimation = TipViewAnimation.showWithScale
 TipView.dismissAnimation = TipViewAnimation.dismissWithScale
 //TipView.enableDismissOnTapOutsideTipInContainer = true
 
+// Custom message view and anchor view
 
-let topLeftTip = TipView()
-topLeftTip.margin = UIEdgeInsets(top: 4, left: 4, bottom: 0, right: 0)
-
-//topLeftTip.maxWidth = 300 // doesn't have any impact
+let customTip = TipView()
 
 let customMessageView = UIView(frame: CGRect.zero)
 customMessageView.translatesAutoresizingMaskIntoConstraints = false
@@ -60,18 +64,46 @@ customMessageView.backgroundColor = UIColor.darkGray
 
 // Don't set customAnchorView if you want to show the default
 // anchorView.
-topLeftTip.customAnchorView = UIView(frame: CGRect.zero)
-topLeftTip.customAnchorView!.translatesAutoresizingMaskIntoConstraints = false
-topLeftTip.customAnchorView!.widthAnchor.constraint(equalToConstant: 10).isActive = true
-topLeftTip.customAnchorView!.heightAnchor.constraint(equalToConstant: 10).isActive = true
-topLeftTip.customAnchorView!.backgroundColor = UIColor.darkGray
+customTip.customAnchorView = UIView(frame: CGRect.zero)
+customTip.customAnchorView!.translatesAutoresizingMaskIntoConstraints = false
+customTip.customAnchorView!.widthAnchor.constraint(equalToConstant: 10).isActive = true
+customTip.customAnchorView!.heightAnchor.constraint(equalToConstant: 10).isActive = true
+customTip.customAnchorView!.backgroundColor = UIColor.darkGray
 
-topLeftTip.show(messageView: customMessageView, sourceView: self.leftTopView, containerView: self.view, direction: .bottom, dismissClosure: { (tipView) in
-    TipView().show(message: msg,
-    sourceView: self.rightTopView,
-    containerView: self.view,
-    direction: .left)
-})
+customTip.show(messageView: customMessageView, 
+    sourceView: self.leftTopView, 
+    containerView: self.view, 
+    direction: .bottom, 
+    dismissClosure: { (tipView) in
+        TipView().show(message: msg,
+        sourceView: self.rightTopView,
+        containerView: self.view,
+        direction: .left)
+    })
+
+// Custom Animation
+
+// Create your custom animation using TipView.AnimationClosureType type, example given below:
+let showWithCustomAnimation: TipView.AnimationClosureType = { messageView, anchorView, completion in
+            // Define animation as you would like
+            messageView.transform = CGAffineTransform(scaleX: 0, y: 0)
+            anchorView.isHidden = true
+            UIView.animate(withDuration: 0.5, delay: 0.0,
+                           usingSpringWithDamping: 0.5,
+                           initialSpringVelocity: 0.5,
+                           options: [.beginFromCurrentState], animations: {
+                            messageView.transform = .identity
+            }) { (_) in
+                anchorView.isHidden = false
+                completion()
+            }
+        }
+        
+// Apply the custom show (or dismiss) animation on global configuration:
+TipView.showAnimation = showWithCustomAnimation
+
+// Or on a TipView instance
+<TipView Instance>.showAnimation = showWithCustomAnimation
 
 ```
 
