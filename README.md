@@ -1,5 +1,5 @@
-# TipView | Tool tip library
-An auto layout engine driven ready to use tool tip library written in swift with full customization support.
+# TipView | Tooltip library
+An auto layout engine driven ready to use tooltip library written in swift with full customisation support.
 
 [![Swift Version][swift-image]][swift-url]
 [![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](http://cocoapods.org/pods/LFAlertController)
