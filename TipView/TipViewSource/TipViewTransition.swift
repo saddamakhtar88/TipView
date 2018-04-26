@@ -11,14 +11,12 @@ class TipViewAnimation {
     
     static let showWithScale: TipView.AnimationClosureType = { messageView, anchorView, completion in
         messageView.transform = CGAffineTransform(scaleX: 0, y: 0)
-        anchorView.isHidden = true
         UIView.animate(withDuration: 0.3, delay: 0.0,
                        usingSpringWithDamping: 0.5,
                        initialSpringVelocity: 0.5,
                        options: [.beginFromCurrentState], animations: {
                         messageView.transform = .identity
-        }) { (_) in
-            anchorView.isHidden = false
+        }) { (_) in            
             completion()
         }
     }
