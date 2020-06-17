@@ -58,9 +58,9 @@ class MessageView: UIView {
                                       constant: -textPadding.bottom).isActive = true
         
         label.setContentCompressionResistancePriority(UILayoutPriority.required,
-                                                      for: UILayoutConstraintAxis.vertical)
+                                                      for: NSLayoutConstraint.Axis.vertical)
         label.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh,
-                                                      for: UILayoutConstraintAxis.horizontal)
+                                                      for: NSLayoutConstraint.Axis.horizontal)
         
         label.numberOfLines = 0
         
