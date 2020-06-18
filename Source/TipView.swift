@@ -66,13 +66,13 @@ public class TipView: NSObject {
     public var showAnimation: AnimationClosureType?
     public var dismissAnimation: AnimationClosureType?
     
+    public var customMessageView: UIView?
+    public var customAnchorView: UIView?
+    
     // MARK: - Private properties
     
     private var tapOverTipGesture: UITapGestureRecognizer?
     private var tapOverTipContainerGesture: UITapGestureRecognizer?
-    
-    private var customMessageView: UIView?
-    private var customAnchorView: UIView?
     
     private var direction: TipView.Direction = .none
     private var sourceView: UIView?
