@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -62,11 +60,11 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="EYb-nD-aSh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0jw-j6-HRu"/>
-                            <constraint firstItem="5mA-wI-AQO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="28" id="Cmw-9X-ibw"/>
+                            <constraint firstItem="5mA-wI-AQO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="28" id="Cmw-9X-ibw"/>
                             <constraint firstItem="NNT-S7-I5q" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="EQT-HP-tft"/>
                             <constraint firstItem="4qZ-YN-3ms" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Ly5-Ce-SlS"/>
                             <constraint firstItem="EYb-nD-aSh" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Nna-pT-kWt"/>
-                            <constraint firstItem="4qZ-YN-3ms" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="28" id="U8r-sQ-tAw"/>
+                            <constraint firstItem="4qZ-YN-3ms" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="28" id="U8r-sQ-tAw"/>
                             <constraint firstItem="b89-eb-Mke" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Yj3-nx-Ce2"/>
                             <constraint firstItem="b89-eb-Mke" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kAj-1b-skT"/>
                             <constraint firstItem="NNT-S7-I5q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lHm-6G-pba"/>
@@ -84,6 +82,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="138" y="134"/>
         </scene>
     </scenes>
 </document>

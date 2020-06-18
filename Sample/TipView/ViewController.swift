@@ -125,19 +125,19 @@ class ViewController: UIViewController {
                             TipView().show(message: msg,
                                            sourceView: self.rightTopView,
                                            containerView: self.view,
-                                           direction: .left)
+                                           direction: .bottom)
         })
         
-        topLeftTip.show(message: msg,
-                        sourceView: self.leftTopView,
-                        containerView: self.view,
-                        direction: .bottom,
-                        dismissClosure: { (tipView) in
-                            TipView().show(message: msg,
-                                           sourceView: self.rightTopView,
-                                           containerView: self.view,
-                                           direction: .left)
-                        })
+//        topLeftTip.show(message: msg,
+//                        sourceView: self.leftTopView,
+//                        containerView: self.view,
+//                        direction: .bottom,
+//                        dismissClosure: { (tipView) in
+//                            TipView().show(message: msg,
+//                                           sourceView: self.rightTopView,
+//                                           containerView: self.view,
+//                                           direction: .bottom)
+//                        })
     }
 
 }
