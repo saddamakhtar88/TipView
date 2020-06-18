@@ -5,9 +5,9 @@
         "package": "TipView",
         "repositoryURL": "https://github.com/saddamakhtar88/TipView.git",
         "state": {
-          "branch": "feature/swift-package",
-          "revision": "e2a335b7a2df09dbea92cd428eff37eba75c7ea5",
-          "version": null
+          "branch": null,
+          "revision": "edef875f0411218f8204ce34402ba8174e2e6556",
+          "version": "1.0.0"
         }
       }
     ]
