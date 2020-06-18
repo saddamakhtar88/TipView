@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "TipView",
+        "repositoryURL": "https://github.com/saddamakhtar88/TipView.git",
+        "state": {
+          "branch": "feature/swift-package",
+          "revision": "e2a335b7a2df09dbea92cd428eff37eba75c7ea5",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

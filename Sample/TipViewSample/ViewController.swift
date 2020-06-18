@@ -1,11 +1,13 @@
 //
 //  ViewController.swift
-//  TipView
+//  TipViewSample
 //
-//  Copyright © 2017 Personal. All rights reserved.
+//  Created by Saddam Akhtar on 6/18/20.
+//  Copyright © 2020 personal. All rights reserved.
 //
 
 import UIKit
+import TipView
 
 class ViewController: UIViewController {
 
@@ -125,19 +127,8 @@ class ViewController: UIViewController {
                             TipView().show(message: msg,
                                            sourceView: self.rightTopView,
                                            containerView: self.view,
-                                           direction: .left)
+                                           direction: .bottom)
         })
-        
-        topLeftTip.show(message: msg,
-                        sourceView: self.leftTopView,
-                        containerView: self.view,
-                        direction: .bottom,
-                        dismissClosure: { (tipView) in
-                            TipView().show(message: msg,
-                                           sourceView: self.rightTopView,
-                                           containerView: self.view,
-                                           direction: .left)
-                        })
     }
 
 }

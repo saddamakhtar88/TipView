@@ -7,9 +7,9 @@
 
 import UIKit
 
-class TipViewAnimation {
+public class TipViewAnimation {
     
-    static let showWithScale: TipView.AnimationClosureType = { messageView, anchorView, completion in
+    public static let showWithScale: TipView.AnimationClosureType = { messageView, anchorView, completion in
         messageView.transform = CGAffineTransform(scaleX: 0, y: 0)
         UIView.animate(withDuration: 0.3, delay: 0.0,
                        usingSpringWithDamping: 0.5,
@@ -21,7 +21,7 @@ class TipViewAnimation {
         }
     }
     
-    static let dismissWithScale: TipView.AnimationClosureType = { messageView, anchorView, completion in
+    public static let dismissWithScale: TipView.AnimationClosureType = { messageView, anchorView, completion in
         messageView.transform = .identity
         anchorView.isHidden = true
         UIView.animate(withDuration: 0.3, delay: 0.0,
@@ -32,7 +32,7 @@ class TipViewAnimation {
         }
     }
     
-    static let showWithFadeIn: TipView.AnimationClosureType = { messageView, anchorView, completion in
+    public static let showWithFadeIn: TipView.AnimationClosureType = { messageView, anchorView, completion in
         messageView.alpha = 0.0
         anchorView.alpha = 0.0
         
@@ -45,7 +45,7 @@ class TipViewAnimation {
         }
     }
     
-    static let dismissWithFadeOut: TipView.AnimationClosureType = { messageView, anchorView, completion in
+    public static let dismissWithFadeOut: TipView.AnimationClosureType = { messageView, anchorView, completion in
         messageView.alpha = 1
         anchorView.alpha = 1
         

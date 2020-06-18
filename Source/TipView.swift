@@ -7,11 +7,11 @@
 
 import UIKit
 
-class TipView: NSObject {
+public class TipView: NSObject {
     
     // MARK: - Enums
     
-    enum Direction {
+    public enum Direction {
         case left
         case right
         case top
@@ -21,58 +21,58 @@ class TipView: NSObject {
     
     // MARK: -
     
-    typealias DismissClosureType = ((TipView) -> Void )
-    typealias AnimationClosureType = (_ messageView: UIView, _ anchorViewUIView: UIView, _ completion: @escaping () -> Void) -> Void
+    public typealias DismissClosureType = ((TipView) -> Void )
+    public typealias AnimationClosureType = (_ messageView: UIView, _ anchorViewUIView: UIView, _ completion: @escaping () -> Void) -> Void
     
     // This is to retain self for functionality like dismissOnTapOverTip
     private var holdMyself: TipView?
     
     // MARK: - Global properties
     
-    static var maxWidth: CGFloat = 200.0
-    static var color: UIColor = UIColor.red
-    static var textColor: UIColor = UIColor.white
-    static var font: UIFont?
-    static var textPadding: UIEdgeInsets = UIEdgeInsets(top: 8.0, left: 8.0,
+    public static var maxWidth: CGFloat = 200.0
+    public static var color: UIColor = UIColor.red
+    public static var textColor: UIColor = UIColor.white
+    public static var font: UIFont?
+    public static var textPadding: UIEdgeInsets = UIEdgeInsets(top: 8.0, left: 8.0,
                                                         bottom: 8.0, right: 8.0)
-    static var margin: UIEdgeInsets = UIEdgeInsets(top: 0, left: 8.0,
+    public static var margin: UIEdgeInsets = UIEdgeInsets(top: 0, left: 8.0,
                                                         bottom: 0, right: 8.0)
-    static var cornerRadius: CGFloat = 6.0
-    static var anchorSize: CGSize = CGSize(width: 10, height: 8)
+    public static var cornerRadius: CGFloat = 6.0
+    public static var anchorSize: CGSize = CGSize(width: 10, height: 8)
     
-    static var enableDismissOnTapOverTip: Bool = false
-    static var enableDismissOnTapOutsideTipInContainer: Bool = false
+    public static var enableDismissOnTapOverTip: Bool = false
+    public static var enableDismissOnTapOutsideTipInContainer: Bool = false
     
-    static var showAnimation: AnimationClosureType?
-    static var dismissAnimation: AnimationClosureType?        
+    public static var showAnimation: AnimationClosureType?
+    public static var dismissAnimation: AnimationClosureType?
     
     // MARK: - Instance properties
     
-    var uniqueID: String?
-    var maxWidth: CGFloat?
-    var color: UIColor?
-    var textColor: UIColor?
-    var font: UIFont?
-    var textPadding: UIEdgeInsets?
-    var margin: UIEdgeInsets?
-    var cornerRadius: CGFloat?
-    var anchorSize: CGSize?
+    public var uniqueID: String?
+    public var maxWidth: CGFloat?
+    public var color: UIColor?
+    public var textColor: UIColor?
+    public var font: UIFont?
+    public var textPadding: UIEdgeInsets?
+    public var margin: UIEdgeInsets?
+    public var cornerRadius: CGFloat?
+    public var anchorSize: CGSize?
     
-    var enableDismissOnTapOverTip: Bool?
-    var enableDismissOnTapOutsideTipInContainer: Bool?
+    public var enableDismissOnTapOverTip: Bool?
+    public var enableDismissOnTapOutsideTipInContainer: Bool?
     
-    var dismissClosure: DismissClosureType?
+    public var dismissClosure: DismissClosureType?
     
-    var showAnimation: AnimationClosureType?
-    var dismissAnimation: AnimationClosureType?
+    public var showAnimation: AnimationClosureType?
+    public var dismissAnimation: AnimationClosureType?
     
-    var tapOverTipGesture: UITapGestureRecognizer?
-    var tapOverTipContainerGesture: UITapGestureRecognizer?
-    
-    var customMessageView: UIView?
-    var customAnchorView: UIView?
+    public var customMessageView: UIView?
+    public var customAnchorView: UIView?
     
     // MARK: - Private properties
+    
+    private var tapOverTipGesture: UITapGestureRecognizer?
+    private var tapOverTipContainerGesture: UITapGestureRecognizer?
     
     private var direction: TipView.Direction = .none
     private var sourceView: UIView?
@@ -81,7 +81,7 @@ class TipView: NSObject {
     
     // MARK: - Instance methods
     
-    func show(message msg: String,
+    public func show(message msg: String,
               sourceView: UIView,
               containerView: UIView?,
               direction: Direction = .none) {
@@ -91,7 +91,7 @@ class TipView: NSObject {
              direction: direction)
     }
     
-    func show(message msg: String,
+    public func show(message msg: String,
               sourceView: UIView,
               containerView: UIView?,
               direction: Direction = .none,
@@ -106,7 +106,7 @@ class TipView: NSObject {
                              repeats: false)
     }
     
-    func show(message msg: String,
+    public func show(message msg: String,
               sourceView: UIView,
               containerView: UIView?,
               direction: Direction = .none,
@@ -119,7 +119,7 @@ class TipView: NSObject {
              direction: direction)
     }
     
-    func show(messageView: UIView,
+    public func show(messageView: UIView,
               sourceView: UIView,
               containerView: UIView?,
               direction: Direction = .none,
@@ -135,7 +135,7 @@ class TipView: NSObject {
                              repeats: false)
     }
     
-    func show(messageView: UIView,
+    public func show(messageView: UIView,
               sourceView: UIView,
               containerView: UIView?,
               direction: Direction = .none,
@@ -148,7 +148,7 @@ class TipView: NSObject {
              direction: direction)
     }
     
-    @objc func dismiss() {
+    @objc public func dismiss() {
         
         if let dismissAnimation = dismissAnimation ?? TipView.dismissAnimation {
             dismissAnimation(tipView, tipViewAnchor, { [weak self] in
@@ -388,7 +388,7 @@ class TipView: NSObject {
 
 extension TipView: UIGestureRecognizerDelegate {
     
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         var allowGesture: Bool = true
         
         // Avoid dismiss when tapped over the tipview on tapOverTipContainerGesture

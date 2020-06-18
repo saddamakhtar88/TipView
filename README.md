@@ -1,5 +1,5 @@
 # TipView | Tooltip library
-An auto layout engine driven ready to use tooltip library written in swift with full customisation support.
+An auto layout engine driven ready to use tooltip library written in swift with full customization support.
 
 [![Swift Version][swift-image]][swift-url]
 [![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](http://cocoapods.org/pods/LFAlertController)
@@ -23,15 +23,23 @@ An auto layout engine driven ready to use tooltip library written in swift with 
 ## Requirements
 
 - iOS 9.0+
-- Xcode 9.0
+- Xcode 11.0 and above
 
 ## Installation
 
-#### Manually
-1. Download and drop ```TipViewSource``` in your project.
-2. Congratulations!  
+### Swift Package Manager
 
-## Usage example
+Once you have your Swift package set up, adding the library as a dependency is as easy as adding it to the dependencies value of your Package.swift.
+
+dependencies: [
+    .package(url: "https://github.com/saddamakhtar88/TipView.git", .upToNextMajor(from: "1.0.0"))
+]
+
+Refer sample app for integration and usage
+
+## Usage
+
+### Show a tip view
 
 ```swift
 // Simply call show on TipView instance with basic parameters
@@ -39,7 +47,11 @@ TipView().show(message: <tip message>,
                 sourceView: <source view>, 
                 containerView: <container view>, 
                 direction: .right)
+```
 
+### Applying global styles and configuration (can be overridden by an instance)
+
+```swift
 // Apply Global configurations using provided class properties.
 // All the styling properties are available as instance property as well
 // to support overriding global configuration on a specific instance
@@ -51,7 +63,11 @@ TipView.enableDismissOnTapOverTip = true
 TipView.showAnimation = TipViewAnimation.showWithScale
 TipView.dismissAnimation = TipViewAnimation.dismissWithScale
 //TipView.enableDismissOnTapOutsideTipInContainer = true
+```
 
+### Showing a custom view
+
+```swift
 // Custom message view and anchor view
 
 let customTip = TipView()
@@ -80,7 +96,11 @@ customTip.show(messageView: customMessageView,
         containerView: self.view,
         direction: .left)
     })
+```
 
+### Applying custom animation
+
+```swift
 // Custom Animation
 
 // Create your custom animation using TipView.AnimationClosureType type, example given below:
