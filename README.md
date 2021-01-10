@@ -129,7 +129,7 @@ TipView.showAnimation = showWithCustomAnimation
 
 ## Contribute
 
-We would love you for the contribution to **TipView**.
+I would love you for the contribution to **TipView**.
 
 [swift-image]:https://img.shields.io/badge/swift-4.0-orange.svg
 [swift-url]: https://swift.org/
