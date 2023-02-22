@@ -34,7 +34,7 @@ class AnchorView: UIView {
         case .top: //
             context.move(to: CGPoint(x: rect.minX, y: rect.minY))
             context.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
-            context.addLine(to: CGPoint(x: (rect.maxX / 2.0), y: rect.maxX))
+            context.addLine(to: CGPoint(x: (rect.maxX / 2.0), y: rect.maxY))
         case .bottom: // ^
             context.move(to: CGPoint(x: rect.minX, y: rect.maxY))
             context.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
